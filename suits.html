@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible", content="ie=edge">
+    <title>SUITS</title>
+    <style>
+        /* css for sticky nav */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap');
+*
+
+{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{
+    overflow-x: hidden;
+}
+.ceo{
+    display: flex;
+    background-color: #000;
+    margin-bottom: 17vh;
+
+}
+#ceoheader{
+    background-color: #000;
+    font-family:'Josefin Sans', sans-serif;
+    color:#fff;
+    text-align: center;
+    align-self: center;
+    font-size: 50px;
+    padding-top: 3vh;
+    margin-top: 17vh;
+
+}
+.ceo p{
+    color:white;
+    font-family: 'Josefin Sans', sans-serif;
+    margin:170px;
+    margin-left: 100px;
+    font-size: 23px;
+    margin-bottom: 20px;
+    margin-top: 130px;
+}
+
+.ceos2 h3{
+    background-color: #000;
+    font-family:'Mrs Saint Delafield', cursive;
+    color:#fff;
+    text-align: center;
+    align-self: center;
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+.ceos{
+    align-self: left;
+    justify-content: left;
+    margin-right: 10%;
+    margin-left: 0px;
+    margin-top: 70px;
+    margin-bottom: 100px;
+    background-color:lightgrey;
+    border-radius: 50%;
+}
+#ceos{
+    width:350px;
+    height:350px;
+    padding: 30px;
+    border-radius: 50%;
+}
+#catalog{
+    font-family: 'Josefin Sans', sans-serif;
+    border-bottom: solid black 7px;
+    text-align: center;
+    font-size: 55px;
+    font-weight: 900;
+    margin-bottom: 14vh;
+}
+
+
+.formal,.casual, .plussize,.sweaters,.winter,.shirts{
+    display: flex;
+    flex-direction: column;
+    height:100vh;
+    width:100vw;
+    margin-top:6vh;
+
+
+
+    box-shadow:0 2px 10px rgba(0, 0, 0, 0.3) ;
+    
+
+}
+
+
+.hey{
+    z-index: 15;
+    position: absolute;
+    justify-self: center;
+    align-self: left;
+    margin-top:35vh ;
+    margin-left: 10vw;
+}
+.hey a{
+    font-size: 30px;
+    color: beige;
+    font-family: 'Josefin Sans', sans-serif;
+    text-decoration: none;
+    text-shadow:0 2px 10px rgba(0, 0, 0, 0.7) ;
+
+}
+.hey a:hover{
+    font-size: 30px;
+    color: black;
+    text-decoration: none;
+    text-shadow:0 2px 10px rgba(0, 0, 0, 0.7) ;
+
+}
+.formal img, .casual img, .plussize img, .sweaters img, .winter img, .shirts img{
+    width:100vw;
+    height: 100vh;
+    z-index: 0;
+    opacity: 0.8;
+   
+    
+}
+.therest{
+    display: flex;
+}
+.minishoes{
+    z-index: 15;
+    position: absolute;
+    justify-self: center;
+    align-self: left;
+    margin-top:15vh ;
+    margin-left: 5vw;
+}
+.minishoes a{
+    font-size: 22px;
+    color: beige;
+    font-family: 'Josefin Sans', sans-serif;
+    text-decoration: none;
+    text-shadow:0 2px 10px rgba(0, 0, 0, 0.7) ;
+}
+.minishoes a:hover{
+    font-size: 22px;
+    color: black;
+    font-family: 'Josefin Sans', sans-serif;
+    text-decoration: none;
+    text-shadow:0 2px 10px rgba(0, 0, 0, 0.7) ;
+}
+.shoes img{
+    width: 27vw;
+    height: 40vh;
+    z-index:0;
+    opacity: 0.9;
+}
+.shoes{
+    display: flex;
+    flex-direction: column;
+    height:40vh;
+    width:27vw;
+    margin-top:100px;
+    margin-bottom: 20vh;
+    margin-left: 3vw;
+    box-shadow:0 2px 10px rgba(0, 0, 0, 0.3) ;
+}
+.seemore{
+    align-self: center;
+    justify-self: center;
+    margin-left:2vw;
+}
+.seemore a{
+    font-size: large;
+    color: darkslateblue;
+    font-family: 'Josefin Sans', sans-serif;
+   
+}
+
+.seemore a:hover{
+        font-size: large;
+        color:black;
+        font-family: 'Josefin Sans', sans-serif;
+}
+
+
+
+.logo{
+    color:white;
+    text-shadow:0 2px 10px rgba(0, 0, 0, 1) ;
+}
+.sticky {
+  font-family: 'Josefin Sans', sans-serif;
+  color: #222;
+  padding-bottom: 50px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav {
+  position: fixed;
+  background-color: #222;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.3s ease-in-out;
+  z-index:100;
+}
+
+.nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 7px 15px;
+  transition: all 0.3s ease-in-out;
+}
+.nav h1{
+    color:#fff;
+    font-size: 50px;
+}
+
+
+.nav.active {
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+.nav.active h1{
+    color:#000;
+}
+
+
+.nav.active a {
+  color: #000;
+}
+
+.nav.active .container {
+  padding: 10px 0;
+}
+
+
+.nav a:hover {
+  color: #c0392b;
+  font-weight: bold;
+}
+
+
+
+/* css for blurry */
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+* {
+  box-sizing: border-box;
+}
+
+.blurry {
+  font-family: 'Josefin Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  width: 100vw;
+}
+
+.bg {
+  background: url('suit1.jpg')
+    no-repeat center center/cover;
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  width: calc(100vw + 60px);
+  height: calc(100vh + 60px);
+  z-index: -1;
+  filter: blur(0px);
+}
+
+.loading-text {
+  font-size: 100px;
+  color: #fff;
+  padding-top: 15px;
+  border-top:solid #fff 5px;
+  border-bottom:solid #fff 5px;
+}
+
+/* css for feedback */
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+.feedback {
+  background-color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.panel-container {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  font-size: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  max-width: 400px;
+}
+
+.panel-container strong {
+  line-height: 20px;
+}
+
+.ratings-container {
+  display: flex;
+  margin: 20px 0;
+}
+
+.rating {
+  flex: 1;
+  cursor: pointer;
+  padding: 20px;
+  margin: 10px 5px;
+}
+
+.rating:hover,
+.rating.active {
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.rating img {
+  width: 40px;
+  height: 40px;
+}
+
+.rating small {
+  color: #555;
+  display: inline-block;
+  margin: 10px 0 0;
+}
+
+.rating:hover small,
+.rating.active small {
+  color: #111;
+}
+
+.btn {
+  background-color: #302d2b;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 12px 30px;
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: 0;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.fa-heart {
+  color: red;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+
+/* css for rotating images */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+.reviews{
+    align-self: center;
+    justify-self:center;
+    font-size: 35px;
+    color:silver;
+    height:63vh;
+    width:62%;
+    margin-left:5vw;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+
+}
+.rotate {
+  background-position: 50%;
+  font-family: 'Josefin Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: top;
+  height: 100vh;
+  margin-top: 25vh;
+
+}
+
+img {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+}
+
+.carousel {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  height: 530px;
+  width: 500px;
+  overflow: hidden;
+
+}
+
+.image-container {
+  display: flex;
+  transform: translateX(0);
+  transition: transform 0.5s ease-in-out;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btns {
+  background-color: silver;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  width: 49.5%;
+}
+
+.btns:hover {
+  opacity: 0.9;
+}
+
+.btns:focus {
+  outline: none;
+}
+
+.table{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Josefin Sans', sans-serif;
+}
+th, td{
+    border: 2px solid black ;
+    font-size: 40px;
+    
+    width:20vw;
+    justify-self: center;
+}
+#sizechart{
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+    border-bottom: 5px solid black;
+    margin-left:30%;
+    margin-right: 30%;
+    margin-bottom: 10vh;
+    font-size: 50px;
+}
+    </style>
+    <link rel = "stylesheet" href = "suits.css">
+</head>
+<body>
+    <div class = "sticky">
+        <nav class="nav">
+            <div class="container">
+              <h1 class="logo">Simply Suits</h1>
+              <ul>
+                <li><a href="#blurry">Back to top</a></li>
+                <li><a href="#ceoheader">About</a></li>
+                <li><a href ="#sizechart">Size Chart</a></li>
+                <li><a href="#panel">Feedback</a></li>
+              </ul>
+            </div>
+          </nav>
+    </div>
+    <div class = "blurry" id = "blurry">
+        <section class="bg"></section>
+        <div class="loading-text"></div>
+    </div>
+    <div class = "rotate" >
+        <div class="carousel">
+            <div class="image-container" id="imgs">
+              <img src="purple.jpg"
+             alt="first-image"
+             
+             />
+          <img
+             src="zoot.jpg"
+             alt="second-image"
+             />
+          <img
+             src="x-mas.jpg"
+             alt="third-image"
+             />
+          <img
+             src="stripes.jpg"
+             alt="fourth-image"
+             />
+            </div>
+      
+            <div class="buttons-container">
+              <button id="left" class="btns">Prev</button>
+              <button id="right" class="btns">Next</button>
+            </div>
+            
+        </div>
+        <div class = "reviews">
+            <ul>
+                <br><li><i>"A happy hybrid of price and quality, you'll never get a suit anywhere else<footer>-GQ Magazine</footer></i></li><br>
+                <li><i>"Simply Suits are simply amazing. Trademark that!"<footer>-Howard Stern</footer></i></li><br>
+                <li><i>"Some of the best suits I've ever seen, and I know fashion!"<footer>-Jay Leno </footer></i></li><br>
+                <li><i>"Simply Suits may even have made up for the 70s"<footer>-Time Magazine</footer></i></li><br>
+                
+            </ul>
+    </div>
+        </div>
+        
+    
+    <h1 id = "ceoheader">A message from our CEO </h1>
+    <div class = "ceo">
+        
+        <div class = "ceos">
+            <img src = "self.jpg" id = "ceos" ></div>
+        <div class = "ceos2">
+            <p>Here at Simply suits, we take pride 
+                in offering<br> our customers the best and latest of the fashion world. Every suit 
+            is made with immense precision and cutting edge style from our team of designers worldwide.
+        But our efforts only go so far. What really makes a suit is its wearer. So on behalf of Simply Suits I invite you, dear customer,
+    to join us in making the best suits in the world.<br><br>Sincerely,</p>
+                <h3> Yaacov Stuhl</h3>
+        </div>
+    </div>
+    <h1 id = "catalog"> Our Collections</h1>
+    <div class = "formal">
+        <div><img src = "formal.jpg" alt = ""></div>
+        <div class = "hey"><a href = "#"><h1>Formal Suits</h1>
+       Be it a wedding, or dressing to the nines, you'll find the perfect look with<br> our formal collection</a></div>
+    </div>
+    <div class = "casual">
+        <div><img src = "casual.jpg" alt = ""></div>
+        <div class = "hey"><a href = "#"><h1>Buisness Casual </h1>
+        Want to be dressed for the workplace while feeling at home?<br> try our buisness casual collection for the best of both worlds</a></div>
+    </div>
+    <div class = "plussize">
+        <div><img src = "plussize.jpg" alt = ""></div>
+        <div class = "hey"><a href = "#"><h1>Plus Size</h1>
+        Live life "large" with our beatiful selection of gorgeous plus size suits</a></div>
+    </div>
+    <div class = "sweaters">
+        <div><img src = "sweaters.jpg" alt = ""></div>
+        <div class = "hey"> <a href = "#"><h1>Sweaters</h1>
+        Show up to Thanksgiving in style with our selection of warm and stylish sweaters</a></div>
+    </div>
+    <div class = "winter">
+        <div><img src = "winter.png" alt = ""></div>
+        <div class = "hey"> <a href = "#"><h1>Winter Gear</h1>
+        Be warm and handsome with our stunning collection of coats, scarves and more</a></div>
+    </div>
+    <div class = "shirts">
+        <div><img src = "shirts.jpg" alt = ""></div>
+        <div class = "hey"> <a href = "#"><h1>Shirts</h1>
+        Look your best while layering down with our stellar selection of crisp and clean shirts</a></div>
+    </div>
+    <div class = "therest">
+        <div class = "shoes">
+            <img src = "shoes.jpg" alt = "">
+        <div class = "minishoes"><a href = "#"><h1>Shoes</h1>What's Batman without<br> Robin? A good suit is nothing<br> without the<br> appropriate footwear</a></div>
+        </div>
+        <div class = "shoes">
+            <img src = "ties.jpg" alt = "">
+        <div class = "minishoes"><a href = "#"><h1>Ties</h1>Make your central piece a<br> centerpiece with our selection of <br>floral,vibrant and smooth ties</a></div>
+    </div>
+    <div class = "shoes">
+        <img src = "belts.jpg" alt = "">
+    <div class = "minishoes"><a href = "#"><h1>Belts</h1>Keep your pants and your style<br> up with our collection of <br>designer belts</a></div>
+    </div>
+    <div class = "seemore"><h3><a href = "#">See more...</a></h3></div>
+    </div>
+    
+        <h1 id = "sizechart">Size Chart</h1>
+    <table class = "table">
+
+            <tbody><th>Size</th>
+            <tr><td>Small</td></tr>
+            <td>Medium</td>
+            <tr><td>Large</td></tr>
+            <tr></tr><td>XL</td></tr>
+            <tr><td>XXL</td></tr>
+            <tr><td>XXXL</td></tr>
+            <tr><td>XXXXL</td></tr></tbody>
+            <tbody><th>Chest</th>
+            <tr><td>37"- 39"</td></tr>
+            <td>40"- 42"</td>
+            <tr><td>43"- 45"</td></tr>
+            <tr></tr><td>46"- 48"</td></tr>
+            <tr><td>49"- 51"</td></tr>
+            <tr><td>52"- 54"</td></tr>
+            <tr><td>55"+</td></tr></tbody>
+            <tbody><th>Waist</th>
+                <tr><td>32"- 34"</td></tr>
+                <td>35"- 37"</td>
+                <tr><td>38"- 40"</td></tr>
+                <tr></tr><td>41"- 43"</td></tr>
+                <tr><td>44"- 46"</td></tr>
+                <tr><td>47"- 49"</td></tr>
+                <tr><td>50"+</td></tr></tbody>
+            <tbody><th>Sleeve</th>
+                <tr><td>32"</td></tr>
+                <td>33"</td>
+                <tr><td>33"/34"</td></tr>
+                <tr></tr><td>34"</td></tr>
+                <tr><td>35"</td></tr>
+                <tr><td>36"</td></tr>
+                <tr><td>37"</td></tr></tbody>
+        </table>
+
+   
+    <div class = feedback>
+    <div id="panel" class="panel-container">
+        <strong>How satisfied are you with our <br /> customer support performance?</strong>
+        <div class="ratings-container">
+          <div class="rating">
+            <img src="https://img.icons8.com/external-neu-royyan-wijaya/64/000000/external-emoji-neumojis-smiley-neu-royyan-wijaya-17.png" alt="">
+            <small>Unhappy</small>
+          </div>
+  
+          <div class="rating">
+            <img src="https://img.icons8.com/external-neu-royyan-wijaya/64/000000/external-emoji-neumojis-smiley-neu-royyan-wijaya-3.png" alt=""/>
+            <small>Neutral</small>
+          </div>
+  
+          <div class="rating active">
+            <img src="https://img.icons8.com/external-neu-royyan-wijaya/64/000000/external-emoji-neumojis-smiley-neu-royyan-wijaya-30.png" alt=""/>
+            <small>Satisfied</small>
+          </div>
+        </div>
+        <button class="btn" id="send">Send Review</button>
+      </div>
+    </div>
+    
+</body>
+<script src = "suits.js"></script>
+<script>/*js for sticky nav*/
+    const nav = document.querySelector('.nav')
+    window.addEventListener('scroll', fixNav)
+    
+    function fixNav() {
+        if(window.scrollY > nav.offsetHeight + 150) {
+            nav.classList.add('active')
+        } else {
+            nav.classList.remove('active')
+        }
+    }
+    // js for blurry
+    const loadText = document.querySelector('.loading-text')
+    const bg = document.querySelector('.bg')
+    
+    let load = 0
+    
+    let int = setInterval(blurring, 20)
+    
+    function blurring() {
+      load++
+    
+      if (load > 99) {
+        clearInterval(int)
+      }
+    
+      loadText.innerText = `FLASH SALE! UP TO 60% OFF! `
+      loadText.style.opacity = scale(load, 0, 100, 1, )
+      bg.style.filter = `blur(${scale(load, 0, 100, 30, 0)}px)`
+    }
+    
+    // https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
+    const scale = (num, in_min, in_max, out_min, out_max) => {
+      return ((num - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min
+    }
+    
+    // js for feedback
+    const ratings = document.querySelectorAll('.rating')
+    const ratingsContainer = document.querySelector('.ratings-container')
+    const sendBtn = document.querySelector('#send')
+    const panel = document.querySelector('#panel')
+    let selectedRating = 'Satisfied'
+    
+    ratingsContainer.addEventListener('click', (e) => {
+        if(e.target.parentNode.classList.contains('rating') && e.target.nextElementSibling) {
+            removeActive()
+            e.target.parentNode.classList.add('active')
+            selectedRating = e.target.nextElementSibling.innerHTML
+        } else if(
+            e.target.parentNode.classList.contains('rating') &&
+            e.target.previousSibling &&
+            e.target.previousElementSibling.nodeName === 'IMG'
+        ) {
+            removeActive()
+            e.target.parentNode.classList.add('active')
+            selectedRating = e.target.innerHTML
+        }
+    
+    })
+    
+    sendBtn.addEventListener('click', (e) => {
+        panel.innerHTML = `
+            <i class="fas fa-heart"></i>
+            <strong>Thank You!</strong>
+            <br>
+            <strong>Feedback: ${selectedRating}</strong>
+            <p>We'll use your feedback to improve our customer support</p>
+        `
+    })
+    
+    function removeActive() {
+        for(let i = 0; i < ratings.length; i++) {
+            ratings[i].classList.remove('active')
+        }
+    }
+    
+    
+    // js for rotating images
+    
+    const imgs = document.getElementById('imgs')
+    const leftBtn = document.getElementById('left')
+    const rightBtn = document.getElementById('right')
+    
+    const img = document.querySelectorAll('#imgs img')
+    
+    let idx = 0
+    
+    let interval = setInterval(run, 2000)
+    
+    function run() {
+        idx++
+        changeImage()
+    }
+    
+    function changeImage() {
+        if(idx > img.length - 1) {
+            idx = 0
+        } else if(idx < 0) {
+            idx = img.length - 1
+        }
+    
+        imgs.style.transform = `translateX(${-idx * 500}px)`
+    }
+    
+    function resetInterval() {
+        clearInterval(interval)
+        interval = setInterval(run, 2000)
+    }
+    
+    rightBtn.addEventListener('click', () => {
+        idx++
+        changeImage()
+        resetInterval()
+    })
+    
+    leftBtn.addEventListener('click', () => {
+        idx--
+        changeImage()
+        resetInterval()
+    })</script> 
+</html>
