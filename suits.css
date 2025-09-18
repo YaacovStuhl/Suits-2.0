@@ -1,4 +1,4 @@
-/* css for sticky nav */
+        /* css for sticky nav */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital@1&display=swap');
@@ -16,7 +16,7 @@ body{
 .ceo{
     display: flex;
     background-color: #000;
-    margin-bottom: 10vh;
+    margin-bottom: 17vh;
 
 }
 #ceoheader{
@@ -170,12 +170,14 @@ body{
 .seemore a{
     font-size: large;
     color: darkslateblue;
+    font-family: 'Josefin Sans', sans-serif;
    
 }
 
 .seemore a:hover{
         font-size: large;
         color:black;
+        font-family: 'Josefin Sans', sans-serif;
 }
 
 
@@ -255,54 +257,7 @@ body{
   font-weight: bold;
 }
 
-/* .hero {
-  background-image: url('https://images.pexels.com/photos/450035/pexels-photo-450035.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom center;
-  height: 100vh;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  margin-bottom: 20px;
-  z-index: -2;
-}
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: -1;
-}
-
-.hero h1 {
-  font-size: 46px;
-  margin: -20px 0 20px;
-}
-
-.hero p {
-  font-size: 20px;
-  letter-spacing: 1px;
-}
-
-.content h2,
-.content h3 {
-  font-size: 150%;
-  margin: 20px 0;
-}
-
-.content p {
-  color: #555;
-  line-height: 30px;
-  letter-spacing: 1.2px;
-} */
 
 /* css for blurry */
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
@@ -323,8 +278,10 @@ body{
 }
 
 .bg {
-  background: url('suit1.jpg')
-    no-repeat center center/cover;
+  background-image: url('images/suit1.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
   position: absolute;
   top: -30px;
   left: -30px;
@@ -460,7 +417,7 @@ body{
   align-items: center;
   justify-content: top;
   height: 100vh;
-  margin-top: 5vh;
+  margin-top: 25vh;
 
 }
 
