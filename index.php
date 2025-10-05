@@ -1,0 +1,183 @@
+<?php
+// Set page title
+$page_title = "Home";
+?>
+
+<?php include 'header.php'; ?>
+
+<!-- Hero Section with Blur Effect -->
+<div class="blurry" id="blurry">
+    <section class="bg"></section>
+    <div class="loading-text"></div>
+</div>
+
+<!-- Carousel and Reviews Section -->
+<div class="rotate">
+    <div class="carousel">
+        <div class="image-container" id="imgs">
+            <img src="images/purple.jpg" alt="Purple Suit" />
+            <img src="images/zoot.jpg" alt="Zoot Suit" />
+            <img src="images/x-mas.jpg" alt="Christmas Suit" />
+            <img src="images/stripes.jpg" alt="Striped Suit" />
+        </div>
+        
+        <div class="buttons-container">
+            <button id="left" class="btns">Prev</button>
+            <button id="right" class="btns">Next</button>
+        </div>
+    </div>
+    
+    <div class="reviews">
+        <ul>
+            <br><li><i>"A happy hybrid of price and quality, you'll never get a suit anywhere else"<footer>-GQ Magazine</footer></i></li><br>
+            <li><i>"Simply Suits are simply amazing. Trademark that!"<footer>-Howard Stern</footer></i></li><br>
+            <li><i>"Some of the best suits I've ever seen, and I know fashion!"<footer>-Jay Leno</footer></i></li><br>
+            <li><i>"Simply Suits may even have made up for the 70s"<footer>-Time Magazine</footer></i></li><br>
+        </ul>
+    </div>
+</div>
+
+<!-- CEO Message Section -->
+<h1 id="ceoheader">A message from our CEO</h1>
+<div class="ceo">
+    <div class="ceos">
+        <img src="images/self.jpg" id="ceos" alt="CEO Photo">
+    </div>
+    <div class="ceos2">
+        <p>Here at Simply suits, we take pride in offering<br> our customers the best and latest of the fashion world. Every suit 
+        is made with immense precision and cutting edge style from our team of designers worldwide.
+        But our efforts only go so far. What really makes a suit is its wearer. So on behalf of Simply Suits I invite you, dear customer,
+        to join us in making the best suits in the world.<br><br>Sincerely,</p>
+        <h3>Yaacov Stuhl</h3>
+    </div>
+</div>
+
+<!-- Collections Section -->
+<h1 id="catalog">Our Collections</h1>
+
+<div class="formal">
+    <div><img src="images/formal.jpg" alt="Formal Suits"></div>
+    <div class="hey"><a href="#"><h1>Formal Suits</h1>
+    Be it a wedding, or dressing to the nines, you'll find the perfect look with<br> our formal collection</a></div>
+</div>
+
+<div class="casual">
+    <div><img src="images/casual.jpg" alt="Business Casual"></div>
+    <div class="hey"><a href="#"><h1>Business Casual</h1>
+    Want to be dressed for the workplace while feeling at home?<br> try our business casual collection for the best of both worlds</a></div>
+</div>
+
+<div class="plussize">
+    <div><img src="images/plussize.jpg" alt="Plus Size Suits"></div>
+    <div class="hey"><a href="#"><h1>Plus Size</h1>
+    Live life "large" with our beautiful selection of gorgeous plus size suits</a></div>
+</div>
+
+<div class="sweaters">
+    <div><img src="images/sweaters.jpg" alt="Sweaters"></div>
+    <div class="hey"><a href="#"><h1>Sweaters</h1>
+    Show up to Thanksgiving in style with our selection of warm and stylish sweaters</a></div>
+</div>
+
+<div class="winter">
+    <div><img src="images/winter.png" alt="Winter Gear"></div>
+    <div class="hey"><a href="#"><h1>Winter Gear</h1>
+    Be warm and handsome with our stunning collection of coats, scarves and more</a></div>
+</div>
+
+<div class="shirts">
+    <div><img src="images/shirts.jpg" alt="Shirts"></div>
+    <div class="hey"><a href="#"><h1>Shirts</h1>
+    Look your best while layering down with our stellar selection of crisp and clean shirts</a></div>
+</div>
+
+<!-- Accessories Section -->
+<div class="therest">
+    <div class="shoes">
+        <img src="images/shoes.jpg" alt="Shoes">
+        <div class="minishoes"><a href="#"><h1>Shoes</h1>What's Batman without<br> Robin? A good suit is nothing<br> without the<br> appropriate footwear</a></div>
+    </div>
+    
+    <div class="shoes">
+        <img src="images/ties.jpg" alt="Ties">
+        <div class="minishoes"><a href="#"><h1>Ties</h1>Make your central piece a<br> centerpiece with our selection of <br>floral, vibrant and smooth ties</a></div>
+    </div>
+    
+    <div class="shoes">
+        <img src="images/belts.jpg" alt="Belts">
+        <div class="minishoes"><a href="#"><h1>Belts</h1>Keep your pants and your style<br> up with our collection of <br>designer belts</a></div>
+    </div>
+    
+    <div class="seemore"><h3><a href="#">See more...</a></h3></div>
+</div>
+
+<!-- Size Chart Section -->
+<h1 id="sizechart">Size Chart</h1>
+<table class="table">
+    <tbody>
+        <th>Size</th>
+        <tr><td>Small</td></tr>
+        <td>Medium</td>
+        <tr><td>Large</td></tr>
+        <tr></tr><td>XL</td></tr>
+        <tr><td>XXL</td></tr>
+        <tr><td>XXXL</td></tr>
+        <tr><td>XXXXL</td></tr>
+    </tbody>
+    <tbody>
+        <th>Chest</th>
+        <tr><td>37"- 39"</td></tr>
+        <td>40"- 42"</td>
+        <tr><td>43"- 45"</td></tr>
+        <tr></tr><td>46"- 48"</td></tr>
+        <tr><td>49"- 51"</td></tr>
+        <tr><td>52"- 54"</td></tr>
+        <tr><td>55"+</td></tr>
+    </tbody>
+    <tbody>
+        <th>Waist</th>
+        <tr><td>32"- 34"</td></tr>
+        <td>35"- 37"</td>
+        <tr><td>38"- 40"</td></tr>
+        <tr></tr><td>41"- 43"</td></tr>
+        <tr><td>44"- 46"</td></tr>
+        <tr><td>47"- 49"</td></tr>
+        <tr><td>50"+</td></tr>
+    </tbody>
+    <tbody>
+        <th>Sleeve</th>
+        <tr><td>32"</td></tr>
+        <td>33"</td>
+        <tr><td>33"/34"</td></tr>
+        <tr></tr><td>34"</td></tr>
+        <tr><td>35"</td></tr>
+        <tr><td>36"</td></tr>
+        <tr><td>37"</td></tr>
+    </tbody>
+</table>
+
+<!-- Feedback Section -->
+<div class="feedback">
+    <div id="panel" class="panel-container">
+        <strong>How satisfied are you with our <br /> customer support performance?</strong>
+        <div class="ratings-container">
+            <div class="rating">
+                <img src="https://img.icons8.com/external-neu-royyan-wijaya/64/000000/external-emoji-neumojis-smiley-neu-royyan-wijaya-17.png" alt="Unhappy">
+                <small>Unhappy</small>
+            </div>
+            
+            <div class="rating">
+                <img src="https://img.icons8.com/external-neu-royyan-wijaya/64/000000/external-emoji-neumojis-smiley-neu-royyan-wijaya-3.png" alt="Neutral"/>
+                <small>Neutral</small>
+            </div>
+            
+            <div class="rating active">
+                <img src="https://img.icons8.com/external-neu-royyan-wijaya/64/000000/external-emoji-neumojis-smiley-neu-royyan-wijaya-30.png" alt="Satisfied"/>
+                <small>Satisfied</small>
+            </div>
+        </div>
+        <button class="btn" id="send">Send Review</button>
+    </div>
+</div>
+
+<?php include 'footer.php'; ?>

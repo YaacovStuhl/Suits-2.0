@@ -1,14 +1,5 @@
-/*js for sticky nav*/
-    const nav = document.querySelector('.nav')
-    window.addEventListener('scroll', fixNav)
-    
-    function fixNav() {
-        if(window.scrollY > nav.offsetHeight + 150) {
-            nav.classList.add('active')
-        } else {
-            nav.classList.remove('active')
-        }
-    }
+/*js for sticky nav - removed color change functionality*/
+    // Navigation remains consistently styled - no color changes on scroll
     // js for blurry
     const loadText = document.querySelector('.loading-text')
     const bg = document.querySelector('.bg')

@@ -1,0 +1,10 @@
+SIMPLY SUITS LOGO
+=================
+
+This is a placeholder for the site logo image.
+Replace this file with an actual logo image (PNG, JPG, or SVG format).
+
+Recommended dimensions: 200x80 pixels
+File name: logo.png (or logo.jpg, logo.svg)
+
+The logo should be placed in the images/ directory and referenced in the header.php file.
