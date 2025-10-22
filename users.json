@@ -1,0 +1,50 @@
+[
+    {
+        "username": "admin",
+        "password": "password123",
+        "email": "admin@simplysuits.com",
+        "first_name": "Admin",
+        "last_name": "User",
+        "created_at": "2025-10-22 02:48:40"
+    },
+    {
+        "username": "user1",
+        "password": "userpass1",
+        "email": "user1@simplysuits.com",
+        "first_name": "User",
+        "last_name": "One",
+        "created_at": "2025-10-22 02:48:40"
+    },
+    {
+        "username": "user2",
+        "password": "userpass2",
+        "email": "user2@simplysuits.com",
+        "first_name": "User",
+        "last_name": "Two",
+        "created_at": "2025-10-22 02:48:40"
+    },
+    {
+        "username": "manager",
+        "password": "managerpass",
+        "email": "manager@simplysuits.com",
+        "first_name": "Manager",
+        "last_name": "User",
+        "created_at": "2025-10-22 02:48:40"
+    },
+    {
+        "username": "customer",
+        "password": "customerpass",
+        "email": "customer@simplysuits.com",
+        "first_name": "Customer",
+        "last_name": "User",
+        "created_at": "2025-10-22 02:48:40"
+    },
+    {
+        "username": "YStuhl",
+        "password": "123456",
+        "email": "ystuhl@student.touro.edu",
+        "first_name": "Yaacov",
+        "last_name": "Stuhl",
+        "created_at": "2025-10-22 02:49:01"
+    }
+]

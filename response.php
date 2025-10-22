@@ -1,47 +1,37 @@
 <?php
-// Set page title
 $page_title = "Login Response";
 ?>
 
 <?php include 'header.php'; ?>
 
 <?php
-// Arrays of valid usernames and passwords (normally this would be from a database)
-$valid_usernames = ['admin', 'user1', 'user2', 'manager', 'customer'];
-$valid_passwords = ['password123', 'userpass1', 'userpass2', 'managerpass', 'customerpass'];
+include 'users_data.php';
 
-// Initialize variables
+
 $login_successful = false;
 $error_message = '';
 
-// Check if form was submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = isset($_POST['username']) ? trim($_POST['username']) : '';
     $password = isset($_POST['password']) ? trim($_POST['password']) : '';
     
-    // Validate credentials
+
     if (!empty($username) && !empty($password)) {
-        // Check if username exists in valid usernames array
-        $username_index = array_search($username, $valid_usernames);
+
+        $user = validateUser($username, $password);
         
-        if ($username_index !== false && isset($valid_passwords[$username_index])) {
-            // Check if password matches
-            if ($password === $valid_passwords[$username_index]) {
-                $login_successful = true;
-                
-                // Set session variable
-                $_SESSION['LoggedIn'] = true;
-                $_SESSION['username'] = $username;
-                
-                // Set cookie with username (expires in 24 hours)
-                setcookie('username', $username, time() + (24 * 60 * 60), '/');
-                
-            } else {
-                $error_message = 'Invalid password. Please try again.';
-                $_SESSION['LoggedIn'] = false;
-            }
+        if ($user) {
+            $login_successful = true;
+            
+
+            $_SESSION['LoggedIn'] = true;
+            $_SESSION['username'] = $username;
+            
+
+            setcookie('username', $username, 0, '/');
+            
         } else {
-            $error_message = 'Invalid username. Please try again.';
+            $error_message = 'Invalid username or password. Please try again.';
             $_SESSION['LoggedIn'] = false;
         }
     } else {
@@ -49,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['LoggedIn'] = false;
     }
 } else {
-    // If not a POST request, redirect to login page
+
     header('Location: login.php');
     exit();
 }

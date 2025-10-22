@@ -1,14 +1,8 @@
 <?php
 // Set page title
 $page_title = "Logout";
-?>
 
-<?php include 'header.php'; ?>
-
-<?php
-// Destroy session and clear cookies
-session_start();
-
+// Destroy session and clear cookies BEFORE any HTML output
 // Clear session variables
 $_SESSION = array();
 
@@ -27,6 +21,8 @@ session_destroy();
 // Clear username cookie
 setcookie('username', '', time() - 3600, '/');
 ?>
+
+<?php include 'header.php'; ?>
 
 <div class="logout-container">
     <div class="logout-wrapper">

@@ -6,6 +6,9 @@ $page_title = "Create Account";
 <?php include 'header.php'; ?>
 
 <?php
+// Include user data functions
+include 'users_data.php';
+
 // Handle form submission
 $success_message = '';
 $error_message = '';
@@ -51,19 +54,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = 'Last name is required.';
     }
     
-    // Check if username already exists (in a real app, this would check a database)
-    $existing_users = ['admin', 'user1', 'user2', 'manager', 'customer'];
-    if (in_array($username, $existing_users)) {
-        $errors[] = 'Username already exists. Please choose a different username.';
+    // Check if username already exists
+    $existing_users = getUsers();
+    foreach ($existing_users as $user) {
+        if ($user['username'] === $username) {
+            $errors[] = 'Username already exists. Please choose a different username.';
+            break;
+        }
     }
     
     if (empty($errors)) {
-        // In a real application, you would save to database here
-        // For now, we'll just show success message
-        $success_message = 'Account created successfully! You can now login with your credentials.';
-        
-        // Clear form data
-        $username = $password = $confirm_password = $email = $first_name = $last_name = '';
+        // Add user to the system
+        if (addUser($username, $password, $email, $first_name, $last_name)) {
+            $success_message = 'Account created successfully! You can now login with your credentials.';
+            
+            // Clear form data
+            $username = $password = $confirm_password = $email = $first_name = $last_name = '';
+        } else {
+            $error_message = 'Failed to create account. Please try again.';
+        }
     } else {
         $error_message = implode('<br>', $errors);
     }

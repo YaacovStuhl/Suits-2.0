@@ -17,7 +17,7 @@
                 <li><a href="#accessories">Accessories</a></li>
             </ul>
         </li>
-        <li><a href="#sizechart">Size Chart</a></li>
+        <li><a href="sizechart.php">Size Chart</a></li>
         <li><a href="#feedback">Feedback</a></li>
         <li><a href="#contact">Contact</a></li>
         <?php if (isset($_SESSION['LoggedIn']) && $_SESSION['LoggedIn'] === true): ?>

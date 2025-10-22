@@ -66,46 +66,151 @@
     }
     
     
-    // js for rotating images
+    // js for rotating images with indicators
+    let carouselInitialized = false
     
-    const imgs = document.getElementById('imgs')
-    const leftBtn = document.getElementById('left')
-    const rightBtn = document.getElementById('right')
-    
-    const img = document.querySelectorAll('#imgs img')
-    
-    let idx = 0
-    
-    let interval = setInterval(run, 2000)
-    
-    function run() {
-        idx++
-        changeImage()
-    }
-    
-    function changeImage() {
-        if(idx > img.length - 1) {
-            idx = 0
-        } else if(idx < 0) {
-            idx = img.length - 1
+    function initCarousel() {
+        if (carouselInitialized) return
+        
+        const imgs = document.getElementById('imgs')
+        const indicators = document.querySelectorAll('.indicator')
+        const img = document.querySelectorAll('#imgs img')
+        
+        if (!imgs || img.length === 0) {
+            console.log('Carousel elements not found')
+            return
         }
-    
-        imgs.style.transform = `translateX(${-idx * 500}px)`
+        
+        console.log('Initializing carousel with', img.length, 'images')
+        
+        let idx = 0
+        
+        // Set initial position
+        imgs.style.transform = 'translateX(0%)'
+        
+        // Set up indicators
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === 0)
+        })
+        
+        function changeImage() {
+            if(idx >= img.length) {
+                idx = 0
+            } else if(idx < 0) {
+                idx = img.length - 1
+            }
+        
+            console.log('Changing to image:', idx, 'Transform:', `translateX(${-idx * 100}%)`)
+            imgs.style.transform = `translateX(${-idx * 100}%)`
+            
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === idx)
+            })
+        }
+        
+        function run() {
+            idx++
+            changeImage()
+        }
+        
+        // Start interval
+        let interval = setInterval(run, 3000)
+        
+        // Add click handlers for indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                clearInterval(interval)
+                idx = index
+                changeImage()
+                interval = setInterval(run, 3000)
+            })
+        })
+        
+        carouselInitialized = true
+        console.log('Carousel initialized and started')
     }
     
-    function resetInterval() {
-        clearInterval(interval)
-        interval = setInterval(run, 2000)
+    // Initialize when DOM is loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initCarousel)
+    } else {
+        initCarousel()
     }
     
-    rightBtn.addEventListener('click', () => {
-        idx++
-        changeImage()
-        resetInterval()
-    })
+    // Testimonials carousel
+    let testimonialsInitialized = false
     
-    leftBtn.addEventListener('click', () => {
-        idx--
-        changeImage()
-        resetInterval()
-    })
+    function initTestimonials() {
+        if (testimonialsInitialized) return
+        
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide')
+        const testimonialIndicators = document.querySelectorAll('.testimonial-indicator')
+        
+        if (testimonialSlides.length === 0) {
+            console.log('Testimonial elements not found')
+            return
+        }
+        
+        console.log('Initializing testimonials with', testimonialSlides.length, 'slides')
+        
+        let testimonialIdx = 0
+        
+        // Set initial slide
+        testimonialSlides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === 0)
+        })
+        
+        testimonialIndicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === 0)
+        })
+        
+        function changeTestimonial() {
+            if(testimonialIdx >= testimonialSlides.length) {
+                testimonialIdx = 0
+            } else if(testimonialIdx < 0) {
+                testimonialIdx = testimonialSlides.length - 1
+            }
+            
+            console.log('Changing to testimonial:', testimonialIdx)
+            
+            // Hide all slides
+            testimonialSlides.forEach(slide => slide.classList.remove('active'))
+            
+            // Show current slide
+            testimonialSlides[testimonialIdx].classList.add('active')
+            
+            // Update testimonial indicators
+            testimonialIndicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === testimonialIdx)
+            })
+        }
+        
+        function runTestimonials() {
+            testimonialIdx++
+            changeTestimonial()
+        }
+        
+        // Start interval
+        let testimonialInterval = setInterval(runTestimonials, 4000)
+        
+        // Add click handlers for testimonial indicators
+        testimonialIndicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                clearInterval(testimonialInterval)
+                testimonialIdx = index
+                changeTestimonial()
+                testimonialInterval = setInterval(runTestimonials, 4000)
+            })
+        })
+        
+        testimonialsInitialized = true
+        console.log('Testimonials initialized and started')
+    }
+    
+    // Initialize testimonials when DOM is loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTestimonials)
+    } else {
+        initTestimonials()
+    }

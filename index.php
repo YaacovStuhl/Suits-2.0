@@ -11,44 +11,147 @@ $page_title = "Home";
     <div class="loading-text"></div>
 </div>
 
-<!-- Carousel and Reviews Section -->
-<div class="rotate">
-    <div class="carousel">
-        <div class="image-container" id="imgs">
-            <img src="images/purple.jpg" alt="Purple Suit" />
-            <img src="images/zoot.jpg" alt="Zoot Suit" />
-            <img src="images/x-mas.jpg" alt="Christmas Suit" />
-            <img src="images/stripes.jpg" alt="Striped Suit" />
+<!-- Carousel and Testimonials Section -->
+<div class="hero-section">
+    <div class="hero-container">
+        <!-- Carousel Section -->
+        <div class="carousel-section">
+            <div class="carousel-wrapper">
+                <div class="carousel">
+                    <div class="image-container" id="imgs">
+                        <img src="images/purple.jpg" alt="Purple Suit" />
+                        <img src="images/zoot.jpg" alt="Zoot Suit" />
+                        <img src="images/x-mas.jpg" alt="Christmas Suit" />
+                        <img src="images/stripes.jpg" alt="Striped Suit" />
+                    </div>
+                    
+                    <!-- Carousel Indicators -->
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <div class="buttons-container">
-            <button id="left" class="btns">Prev</button>
-            <button id="right" class="btns">Next</button>
+        <!-- Testimonials Section -->
+        <div class="testimonials-section">
+            <div class="testimonials-wrapper">
+                <div class="testimonials-header">
+                    <h2>What Industry Leaders Say</h2>
+                    <p>Trusted by fashion experts worldwide</p>
+                </div>
+                
+                <div class="testimonials-carousel">
+                    <div class="testimonial-slide active">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <p class="testimonial-text">A happy hybrid of price and quality, you'll never get a suit anywhere else</p>
+                            <div class="testimonial-author">
+                                <h4>GQ Magazine</h4>
+                                <span>Fashion Authority</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <p class="testimonial-text">Simply Suits are simply amazing. Trademark that!</p>
+                            <div class="testimonial-author">
+                                <h4>Howard Stern</h4>
+                                <span>Media Personality</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <p class="testimonial-text">Some of the best suits I've ever seen, and I know fashion!</p>
+                            <div class="testimonial-author">
+                                <h4>Jay Leno</h4>
+                                <span>Television Host</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <p class="testimonial-text">Simply Suits may even have made up for the 70s</p>
+                            <div class="testimonial-author">
+                                <h4>Time Magazine</h4>
+                                <span>International Publication</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial Indicators -->
+                <div class="testimonial-indicators">
+                    <span class="testimonial-indicator active" data-testimonial="0"></span>
+                    <span class="testimonial-indicator" data-testimonial="1"></span>
+                    <span class="testimonial-indicator" data-testimonial="2"></span>
+                    <span class="testimonial-indicator" data-testimonial="3"></span>
+                </div>
+            </div>
         </div>
-    </div>
-    
-    <div class="reviews">
-        <ul>
-            <br><li><i>"A happy hybrid of price and quality, you'll never get a suit anywhere else"<footer>-GQ Magazine</footer></i></li><br>
-            <li><i>"Simply Suits are simply amazing. Trademark that!"<footer>-Howard Stern</footer></i></li><br>
-            <li><i>"Some of the best suits I've ever seen, and I know fashion!"<footer>-Jay Leno</footer></i></li><br>
-            <li><i>"Simply Suits may even have made up for the 70s"<footer>-Time Magazine</footer></i></li><br>
-        </ul>
     </div>
 </div>
 
 <!-- CEO Message Section -->
-<h1 id="ceoheader">A message from our CEO</h1>
-<div class="ceo">
-    <div class="ceos">
-        <img src="images/self.jpg" id="ceos" alt="CEO Photo">
-    </div>
-    <div class="ceos2">
-        <p>Here at Simply suits, we take pride in offering<br> our customers the best and latest of the fashion world. Every suit 
-        is made with immense precision and cutting edge style from our team of designers worldwide.
-        But our efforts only go so far. What really makes a suit is its wearer. So on behalf of Simply Suits I invite you, dear customer,
-        to join us in making the best suits in the world.<br><br>Sincerely,</p>
-        <h3>Yaacov Stuhl</h3>
+<div class="ceo-section">
+    <div class="ceo-container">
+        <div class="ceo-header">
+            <h1>Leadership Message</h1>
+            <p class="ceo-subtitle">A word from our Chief Executive Officer</p>
+        </div>
+        
+        <div class="ceo-content">
+            <div class="ceo-image">
+                <div class="ceo-image-wrapper">
+                    <img src="images/self.jpg" alt="Yaacov Stuhl, CEO of Simply Suits">
+                    <div class="ceo-badge">
+                        <span class="badge-title">CEO</span>
+                        <span class="badge-company">Simply Suits</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="ceo-message">
+                <div class="message-content">
+                    <h2>Excellence in Every Stitch</h2>
+                    <p class="message-text">
+                        At Simply Suits, we believe that exceptional style begins with exceptional craftsmanship. 
+                        Our commitment to quality is unwavering—every suit is meticulously crafted with precision 
+                        and attention to detail that reflects our passion for excellence.
+                    </p>
+                    <p class="message-text">
+                        We understand that a great suit is more than just fabric and thread; it's confidence, 
+                        professionalism, and personal expression. Our global team of master designers and artisans 
+                        work tirelessly to bring you the finest in contemporary menswear, combining timeless 
+                        elegance with modern innovation.
+                    </p>
+                    <p class="message-text">
+                        What truly makes a suit exceptional is the person wearing it. We invite you to discover 
+                        the perfect fit that reflects your unique style and helps you make your best impression 
+                        in every moment that matters.
+                    </p>
+                </div>
+                
+                <div class="ceo-signature">
+                    <div class="signature-line"></div>
+                    <div class="signature-details">
+                        <h3>Yaacov Stuhl</h3>
+                        <p>Chief Executive Officer</p>
+                        <p>Simply Suits</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -111,50 +214,6 @@ $page_title = "Home";
     <div class="seemore"><h3><a href="#">See more...</a></h3></div>
 </div>
 
-<!-- Size Chart Section -->
-<h1 id="sizechart">Size Chart</h1>
-<table class="table">
-    <tbody>
-        <th>Size</th>
-        <tr><td>Small</td></tr>
-        <td>Medium</td>
-        <tr><td>Large</td></tr>
-        <tr></tr><td>XL</td></tr>
-        <tr><td>XXL</td></tr>
-        <tr><td>XXXL</td></tr>
-        <tr><td>XXXXL</td></tr>
-    </tbody>
-    <tbody>
-        <th>Chest</th>
-        <tr><td>37"- 39"</td></tr>
-        <td>40"- 42"</td>
-        <tr><td>43"- 45"</td></tr>
-        <tr></tr><td>46"- 48"</td></tr>
-        <tr><td>49"- 51"</td></tr>
-        <tr><td>52"- 54"</td></tr>
-        <tr><td>55"+</td></tr>
-    </tbody>
-    <tbody>
-        <th>Waist</th>
-        <tr><td>32"- 34"</td></tr>
-        <td>35"- 37"</td>
-        <tr><td>38"- 40"</td></tr>
-        <tr></tr><td>41"- 43"</td></tr>
-        <tr><td>44"- 46"</td></tr>
-        <tr><td>47"- 49"</td></tr>
-        <tr><td>50"+</td></tr>
-    </tbody>
-    <tbody>
-        <th>Sleeve</th>
-        <tr><td>32"</td></tr>
-        <td>33"</td>
-        <tr><td>33"/34"</td></tr>
-        <tr></tr><td>34"</td></tr>
-        <tr><td>35"</td></tr>
-        <tr><td>36"</td></tr>
-        <tr><td>37"</td></tr>
-    </tbody>
-</table>
 
 <!-- Feedback Section -->
 <div class="feedback">
@@ -179,5 +238,569 @@ $page_title = "Home";
         <button class="btn" id="send">Send Review</button>
     </div>
 </div>
+
+<style>
+/* Hero Section - Carousel and Testimonials */
+.hero-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 4rem 0;
+    margin: 3rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(52, 73, 94, 0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+    opacity: 0.3;
+}
+
+.hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Carousel Section */
+.carousel-section {
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-wrapper {
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.carousel {
+    position: relative;
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: 400px;
+}
+
+.carousel:hover {
+    transform: translateY(-5px);
+}
+
+.image-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    border-radius: 25px;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.image-container img {
+    width: 100%;
+    min-width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.indicator.active {
+    background: var(--accent-color, #3498db);
+    border-color: white;
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    background: white;
+    border-radius: 25px;
+    padding: 3rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonials-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color, #3498db), var(--primary-color, #2c3e50));
+}
+
+.testimonials-wrapper {
+    position: relative;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonials-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.testimonials-header h2 {
+    font-size: 2rem;
+    color: var(--primary-color, #2c3e50);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.testimonials-header p {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 300;
+}
+
+.testimonials-carousel {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+}
+
+.testimonial-slide.active {
+    opacity: 1;
+}
+
+.testimonial-content {
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.quote-icon {
+    font-size: 3rem;
+    color: var(--accent-color, #3498db);
+    font-family: serif;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+}
+
+.testimonial-text {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 2rem;
+    font-style: italic;
+    position: relative;
+}
+
+.testimonial-text::after {
+    content: '"';
+    font-size: 2rem;
+    color: var(--accent-color, #3498db);
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    opacity: 0.7;
+}
+
+.testimonial-author {
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.testimonial-author h4 {
+    color: var(--primary-color, #2c3e50);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.testimonial-author span {
+    color: #666;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.testimonial-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 2rem;
+}
+
+.testimonial-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.testimonial-indicator.active {
+    background: var(--accent-color, #3498db);
+    transform: scale(1.2);
+}
+
+.testimonial-indicator:hover {
+    background: var(--primary-color, #2c3e50);
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .carousel-wrapper {
+        max-width: 600px;
+    }
+    
+    .testimonials-wrapper {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 3rem 0;
+    }
+    
+    .hero-container {
+        padding: 0 1rem;
+        gap: 2rem;
+    }
+    
+    .testimonials-section {
+        padding: 2rem;
+    }
+    
+    .testimonials-wrapper {
+        height: 300px;
+    }
+    
+    .testimonials-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .quote-icon {
+        font-size: 2.5rem;
+    }
+    
+    .testimonial-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-container {
+        padding: 0 0.5rem;
+    }
+    
+    .testimonials-section {
+        padding: 1.5rem;
+    }
+    
+    .testimonials-wrapper {
+        height: 280px;
+    }
+    
+    .testimonials-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .testimonials-header p {
+        font-size: 0.9rem;
+    }
+    
+    .quote-icon {
+        font-size: 2rem;
+    }
+    
+    .testimonial-text {
+        font-size: 1rem;
+    }
+    
+    .testimonial-author h4 {
+        font-size: 1.1rem;
+    }
+    
+    .testimonial-author span {
+        font-size: 0.9rem;
+    }
+}
+
+/* CEO Section Professional Styling */
+.ceo-section {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 4rem 0;
+    margin: 3rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.ceo-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="50" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="30" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+}
+
+.ceo-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.ceo-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.ceo-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ceo-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.ceo-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.ceo-image {
+    display: flex;
+    justify-content: center;
+}
+
+.ceo-image-wrapper {
+    position: relative;
+    max-width: 300px;
+    width: 100%;
+}
+
+.ceo-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.ceo-image img:hover {
+    transform: scale(1.02);
+}
+
+.ceo-badge {
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    min-width: 120px;
+}
+
+.badge-title {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.badge-company {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.ceo-message {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.message-content h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #ecf0f1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.message-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    opacity: 0.95;
+    text-align: justify;
+}
+
+.ceo-signature {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.signature-line {
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(90deg, #3498db, #2980b9);
+    margin-bottom: 1rem;
+}
+
+.signature-details h3 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #ecf0f1;
+}
+
+.signature-details p {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin: 0.25rem 0;
+    font-weight: 300;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .ceo-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
+    
+    .ceo-image {
+        order: -1;
+    }
+    
+    .message-content h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .ceo-section {
+        padding: 3rem 0;
+    }
+    
+    .ceo-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .ceo-message {
+        padding: 2rem;
+    }
+    
+    .message-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .message-text {
+        font-size: 1rem;
+        text-align: left;
+    }
+}
+
+@media (max-width: 480px) {
+    .ceo-container {
+        padding: 0 1rem;
+    }
+    
+    .ceo-header h1 {
+        font-size: 2rem;
+    }
+    
+    .ceo-message {
+        padding: 1.5rem;
+    }
+    
+    .ceo-badge {
+        padding: 0.75rem 1rem;
+        min-width: 100px;
+    }
+    
+    .badge-title {
+        font-size: 1rem;
+    }
+    
+    .badge-company {
+        font-size: 0.8rem;
+    }
+}
+</style>
 
 <?php include 'footer.php'; ?>
