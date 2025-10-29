@@ -1,33 +1,25 @@
 <?php
-$page_title = "Login Response";
-?>
+session_start();
 
-<?php include 'header.php'; ?>
-
-<?php
 include 'users_data.php';
-
 
 $login_successful = false;
 $error_message = '';
 
+// Process login FIRST, before any output
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = isset($_POST['username']) ? trim($_POST['username']) : '';
     $password = isset($_POST['password']) ? trim($_POST['password']) : '';
     
-
     if (!empty($username) && !empty($password)) {
-
         $user = validateUser($username, $password);
         
         if ($user) {
             $login_successful = true;
             
-
+            // Set session and cookie BEFORE any HTML output
             $_SESSION['LoggedIn'] = true;
             $_SESSION['username'] = $username;
-            
-
             setcookie('username', $username, 0, '/');
             
         } else {
@@ -39,12 +31,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['LoggedIn'] = false;
     }
 } else {
-
+    // Redirect if not POST request
     header('Location: login.php');
     exit();
 }
-?>
 
+// NOW it's safe to output HTML
+$page_title = "Login Response";
+include 'header.php';
+?>
 <div class="response-container">
     <div class="response-wrapper">
         <?php if ($login_successful): ?>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Set page title
 $page_title = "Create Account";
 ?>
