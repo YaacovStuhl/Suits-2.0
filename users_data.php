@@ -1,103 +1,150 @@
 <?php
-// Simple file-based user storage system
-// In a real application, this would be a database
+/**
+ * User Data Functions - MySQL Version
+ * Handles user registration, authentication, and management
+ */
 
-function getUsers() {
-    $users_file = 'users.json';
+require_once 'db_config.php';
+
+/**
+ * Get a user by username
+ * @param string $username The username to search for
+ * @return array|false Returns user array or false if not found
+ */
+function getUserByUsername($username) {
+    $conn = getDBConnection();
+    $stmt = $conn->prepare("SELECT user_id, username, password, email, first_name, last_name, phone FROM users WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+    $stmt->close();
+    closeDBConnection($conn);
     
-    if (file_exists($users_file)) {
-        $data = file_get_contents($users_file);
-        return json_decode($data, true) ?: [];
-    }
-    
-    return [];
+    return $user ? $user : false;
 }
 
-function saveUsers($users) {
-    $users_file = 'users.json';
-    return file_put_contents($users_file, json_encode($users, JSON_PRETTY_PRINT));
+/**
+ * Get a user by email
+ * @param string $email The email to search for
+ * @return array|false Returns user array or false if not found
+ */
+function getUserByEmail($email) {
+    $conn = getDBConnection();
+    $stmt = $conn->prepare("SELECT user_id, username, password, email, first_name, last_name, phone FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+    $stmt->close();
+    closeDBConnection($conn);
+    
+    return $user ? $user : false;
 }
 
-function addUser($username, $password, $email, $first_name, $last_name) {
-    $users = getUsers();
+/**
+ * Get a user by ID
+ * @param int $user_id The user ID to search for
+ * @return array|false Returns user array or false if not found
+ */
+function getUserById($user_id) {
+    $conn = getDBConnection();
+    $stmt = $conn->prepare("SELECT user_id, username, password, email, first_name, last_name, phone FROM users WHERE user_id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+    $stmt->close();
+    closeDBConnection($conn);
     
+    return $user ? $user : false;
+}
+
+/**
+ * Add a new user to the database
+ * @param string $username Username
+ * @param string $password Plain text password
+ * @param string $email Email address
+ * @param string $first_name First name
+ * @param string $last_name Last name
+ * @param string $phone Phone number (optional)
+ * @return bool Returns true on success, false on failure
+ */
+function addUser($username, $password, $email, $first_name, $last_name, $phone = null) {
     // Check if username already exists
-    foreach ($users as $user) {
-        if ($user['username'] === $username) {
-            return false; // Username already exists
-        }
+    if (getUserByUsername($username)) {
+        return false; // Username already exists
     }
     
-    // Add new user
-    $users[] = [
-        'username' => $username,
-        'password' => $password, // In production, this should be hashed
-        'email' => $email,
-        'first_name' => $first_name,
-        'last_name' => $last_name,
-        'created_at' => date('Y-m-d H:i:s')
-    ];
+    // Check if email already exists
+    if (getUserByEmail($email)) {
+        return false; // Email already exists
+    }
     
-    return saveUsers($users);
+    $conn = getDBConnection();
+    $stmt = $conn->prepare("INSERT INTO users (username, password, email, first_name, last_name, phone) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssss", $username, $password, $email, $first_name, $last_name, $phone);
+    $result = $stmt->execute();
+    $stmt->close();
+    closeDBConnection($conn);
+    
+    return $result;
 }
 
+/**
+ * Validate user credentials
+ * @param string $username Username
+ * @param string $password Plain text password
+ * @return array|false Returns user array if valid, false otherwise
+ */
 function validateUser($username, $password) {
-    $users = getUsers();
+    // Ensure we're using MySQL - check that db_config is loaded
+    if (!function_exists('getDBConnection')) {
+        error_log("ERROR: getDBConnection() not found! Database connection not available.");
+        return false;
+    }
     
-    foreach ($users as $user) {
-        if ($user['username'] === $username && $user['password'] === $password) {
+    try {
+        $user = getUserByUsername($username);
+        
+        if (!$user) {
+            // User not found in database
+            return false;
+        }
+        
+        // Compare plain text password
+        if ($user['password'] === $password) {
+            // Remove password from returned user data
+            unset($user['password']);
             return $user;
         }
+        
+        // Password doesn't match
+        return false;
+        
+    } catch (Exception $e) {
+        error_log("Error in validateUser(): " . $e->getMessage());
+        return false;
     }
-    
-    return false;
 }
 
-// Initialize with default users if file doesn't exist
-if (!file_exists('users.json')) {
-    $default_users = [
-        [
-            'username' => 'admin',
-            'password' => 'password123',
-            'email' => 'admin@simplysuits.com',
-            'first_name' => 'Admin',
-            'last_name' => 'User',
-            'created_at' => date('Y-m-d H:i:s')
-        ],
-        [
-            'username' => 'user1',
-            'password' => 'userpass1',
-            'email' => 'user1@simplysuits.com',
-            'first_name' => 'User',
-            'last_name' => 'One',
-            'created_at' => date('Y-m-d H:i:s')
-        ],
-        [
-            'username' => 'user2',
-            'password' => 'userpass2',
-            'email' => 'user2@simplysuits.com',
-            'first_name' => 'User',
-            'last_name' => 'Two',
-            'created_at' => date('Y-m-d H:i:s')
-        ],
-        [
-            'username' => 'manager',
-            'password' => 'managerpass',
-            'email' => 'manager@simplysuits.com',
-            'first_name' => 'Manager',
-            'last_name' => 'User',
-            'created_at' => date('Y-m-d H:i:s')
-        ],
-        [
-            'username' => 'customer',
-            'password' => 'customerpass',
-            'email' => 'customer@simplysuits.com',
-            'first_name' => 'Customer',
-            'last_name' => 'User',
-            'created_at' => date('Y-m-d H:i:s')
-        ]
-    ];
+/**
+ * Get all users (for admin purposes - use with caution)
+ * @return array Returns array of all users
+ */
+function getAllUsers() {
+    $conn = getDBConnection();
+    $result = $conn->query("SELECT user_id, username, email, first_name, last_name, phone FROM users ORDER BY user_id DESC");
+    $users = [];
     
-    saveUsers($default_users);
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $users[] = $row;
+        }
+    }
+    
+    closeDBConnection($conn);
+    return $users;
 }
+
 ?>

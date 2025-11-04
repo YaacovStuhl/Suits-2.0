@@ -55,13 +55,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = 'Last name is required.';
     }
     
-    // Check if username already exists
-    $existing_users = getUsers();
-    foreach ($existing_users as $user) {
-        if ($user['username'] === $username) {
-            $errors[] = 'Username already exists. Please choose a different username.';
-            break;
-        }
+    // Check if username already exists (using MySQL)
+    $existing_user = getUserByUsername($username);
+    if ($existing_user) {
+        $errors[] = 'Username already exists. Please choose a different username.';
+    }
+    
+    // Check if email already exists
+    $existing_email = getUserByEmail($email);
+    if ($existing_email) {
+        $errors[] = 'Email address already exists. Please use a different email.';
     }
     
     if (empty($errors)) {
