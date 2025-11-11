@@ -18,6 +18,7 @@
             </ul>
         </li>
         <li><a href="sizechart.php">Size Chart</a></li>
+        <li><a href="order_form.php">Place Order</a></li>
         <li><a href="#feedback">Feedback</a></li>
         <li><a href="#contact">Contact</a></li>
         <?php if (isset($_SESSION['LoggedIn']) && $_SESSION['LoggedIn'] === true): ?>
@@ -25,6 +26,7 @@
                 <a href="content.php">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></a>
                 <ul class="dropdown-menu">
                     <li><a href="content.php">Protected Content</a></li>
+                    <li><a href="view_orders.php">View All Orders</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
             </li>

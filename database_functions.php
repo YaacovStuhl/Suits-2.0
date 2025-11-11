@@ -16,7 +16,7 @@ require_once 'db_config.php';
  */
 function getCategories() {
     $conn = getDBConnection();
-    $result = $conn->query("SELECT category_id, category_name, description FROM categories WHERE is_active = 1 ORDER BY display_order ASC, category_name ASC");
+    $result = $conn->query("SELECT category_id, category_name, description FROM categories ORDER BY display_order ASC, category_name ASC");
     $categories = [];
     
     if ($result && $result->num_rows > 0) {
@@ -36,7 +36,7 @@ function getCategories() {
  */
 function getCategoryById($category_id) {
     $conn = getDBConnection();
-    $stmt = $conn->prepare("SELECT category_id, category_name, description, display_order, is_active FROM categories WHERE category_id = ?");
+    $stmt = $conn->prepare("SELECT category_id, category_name, description, display_order FROM categories WHERE category_id = ?");
     $stmt->bind_param("i", $category_id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -58,7 +58,7 @@ function getCategoryById($category_id) {
  */
 function getSizes($size_type = 'clothing') {
     $conn = getDBConnection();
-    $stmt = $conn->prepare("SELECT size_id, size_value, description FROM sizes WHERE size_type = ? AND is_active = 1 ORDER BY display_order ASC, size_value ASC");
+    $stmt = $conn->prepare("SELECT size_id, size_value, description FROM sizes WHERE size_type = ? ORDER BY display_order ASC, size_value ASC");
     $stmt->bind_param("s", $size_type);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -81,7 +81,7 @@ function getSizes($size_type = 'clothing') {
  */
 function getAllSizes() {
     $conn = getDBConnection();
-    $result = $conn->query("SELECT size_id, size_value, size_type, description FROM sizes WHERE is_active = 1 ORDER BY size_type ASC, display_order ASC, size_value ASC");
+    $result = $conn->query("SELECT size_id, size_value, size_type, description FROM sizes ORDER BY size_type ASC, display_order ASC, size_value ASC");
     $sizes = [];
     
     if ($result && $result->num_rows > 0) {
@@ -171,7 +171,7 @@ function getUserOrders($user_id) {
  */
 function getOrderById($order_id) {
     $conn = getDBConnection();
-    $stmt = $conn->prepare("SELECT o.order_id, o.user_id, o.product_name, o.total_amount, u.username, u.email, u.first_name, u.last_name FROM orders o LEFT JOIN users u ON o.user_id = u.user_id WHERE o.order_id = ?");
+    $stmt = $conn->prepare("SELECT o.order_id, o.user_id, o.product_name, o.total_amount, au.username FROM orders o LEFT JOIN AuthorizedUsers au ON o.user_id = au.user_id WHERE o.order_id = ?");
     $stmt->bind_param("i", $order_id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -188,7 +188,7 @@ function getOrderById($order_id) {
  */
 function getAllOrders() {
     $conn = getDBConnection();
-    $result = $conn->query("SELECT o.order_id, o.user_id, o.product_name, o.total_amount, u.username, u.email, u.first_name, u.last_name FROM orders o LEFT JOIN users u ON o.user_id = u.user_id ORDER BY o.order_id DESC");
+    $result = $conn->query("SELECT o.order_id, o.user_id, o.product_name, o.total_amount, au.username FROM orders o LEFT JOIN AuthorizedUsers au ON o.user_id = au.user_id ORDER BY o.order_id DESC");
     $orders = [];
     
     if ($result && $result->num_rows > 0) {
@@ -203,4 +203,3 @@ function getAllOrders() {
 
 
 ?>
-

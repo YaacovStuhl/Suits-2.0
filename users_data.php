@@ -13,7 +13,7 @@ require_once 'db_config.php';
  */
 function getUserByUsername($username) {
     $conn = getDBConnection();
-    $stmt = $conn->prepare("SELECT user_id, username, password, email, first_name, last_name, phone FROM users WHERE username = ?");
+    $stmt = $conn->prepare("SELECT username, password FROM AuthorizedUsers WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -25,70 +25,82 @@ function getUserByUsername($username) {
 }
 
 /**
- * Get a user by email
- * @param string $email The email to search for
- * @return array|false Returns user array or false if not found
- */
-function getUserByEmail($email) {
-    $conn = getDBConnection();
-    $stmt = $conn->prepare("SELECT user_id, username, password, email, first_name, last_name, phone FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
-    $stmt->close();
-    closeDBConnection($conn);
-    
-    return $user ? $user : false;
-}
-
-/**
- * Get a user by ID
+ * Get a user by ID (Note: AuthorizedUsers table uses username as primary key, not user_id)
+ * This function is kept for compatibility but may not work if the table structure differs
  * @param int $user_id The user ID to search for
  * @return array|false Returns user array or false if not found
  */
 function getUserById($user_id) {
-    $conn = getDBConnection();
-    $stmt = $conn->prepare("SELECT user_id, username, password, email, first_name, last_name, phone FROM users WHERE user_id = ?");
-    $stmt->bind_param("i", $user_id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
-    $stmt->close();
-    closeDBConnection($conn);
-    
-    return $user ? $user : false;
+    // AuthorizedUsers table uses username as primary key, not user_id
+    // This function may not be applicable for this table
+    return false;
 }
 
 /**
  * Add a new user to the database
  * @param string $username Username
  * @param string $password Plain text password
- * @param string $email Email address
- * @param string $first_name First name
- * @param string $last_name Last name
- * @param string $phone Phone number (optional)
+ * @param string $phone Phone number (optional, not stored in AuthorizedUsers table)
  * @return bool Returns true on success, false on failure
  */
-function addUser($username, $password, $email, $first_name, $last_name, $phone = null) {
+function addUser($username, $password, $phone = null) {
     // Check if username already exists
     if (getUserByUsername($username)) {
         return false; // Username already exists
     }
     
-    // Check if email already exists
-    if (getUserByEmail($email)) {
-        return false; // Email already exists
+    try {
+        $conn = getDBConnection();
+        
+        // Check if email column exists in the table
+        $result = $conn->query("SHOW COLUMNS FROM AuthorizedUsers LIKE 'email'");
+        $hasEmailColumn = $result && $result->num_rows > 0;
+        
+        if ($hasEmailColumn) {
+            // If email column exists, generate a unique email based on username
+            // or set to NULL if the column allows it
+            // First, try to get the column definition to see if it allows NULL
+            $columnInfo = $conn->query("SHOW COLUMNS FROM AuthorizedUsers WHERE Field = 'email'");
+            $column = $columnInfo->fetch_assoc();
+            $allowsNull = ($column['Null'] === 'YES');
+            
+            if ($allowsNull) {
+                // Set email to NULL if allowed
+                $stmt = $conn->prepare("INSERT INTO AuthorizedUsers (username, password, email) VALUES (?, ?, NULL)");
+                $stmt->bind_param("ss", $username, $password);
+            } else {
+                // Generate a unique email based on username to avoid duplicate empty strings
+                $email = $username . '@simplysuits.local';
+                $stmt = $conn->prepare("INSERT INTO AuthorizedUsers (username, password, email) VALUES (?, ?, ?)");
+                $stmt->bind_param("sss", $username, $password, $email);
+            }
+        } else {
+            // No email column, just insert username and password
+            $stmt = $conn->prepare("INSERT INTO AuthorizedUsers (username, password) VALUES (?, ?)");
+            $stmt->bind_param("ss", $username, $password);
+        }
+        
+        $result = $stmt->execute();
+        
+        if (!$result) {
+            $error = $stmt->error;
+            error_log("Error adding user: " . $error);
+            $stmt->close();
+            closeDBConnection($conn);
+            return false;
+        }
+        
+        $stmt->close();
+        closeDBConnection($conn);
+        
+        return true;
+    } catch (mysqli_sql_exception $e) {
+        error_log("MySQL Exception in addUser(): " . $e->getMessage());
+        return false;
+    } catch (Exception $e) {
+        error_log("Exception in addUser(): " . $e->getMessage());
+        return false;
     }
-    
-    $conn = getDBConnection();
-    $stmt = $conn->prepare("INSERT INTO users (username, password, email, first_name, last_name, phone) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssss", $username, $password, $email, $first_name, $last_name, $phone);
-    $result = $stmt->execute();
-    $stmt->close();
-    closeDBConnection($conn);
-    
-    return $result;
 }
 
 /**
@@ -134,7 +146,7 @@ function validateUser($username, $password) {
  */
 function getAllUsers() {
     $conn = getDBConnection();
-    $result = $conn->query("SELECT user_id, username, email, first_name, last_name, phone FROM users ORDER BY user_id DESC");
+    $result = $conn->query("SELECT username FROM AuthorizedUsers ORDER BY username");
     $users = [];
     
     if ($result && $result->num_rows > 0) {
