@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Set page title
 $page_title = "Create Account";
 ?>
@@ -17,9 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = isset($_POST['username']) ? trim($_POST['username']) : '';
     $password = isset($_POST['password']) ? trim($_POST['password']) : '';
     $confirm_password = isset($_POST['confirm_password']) ? trim($_POST['confirm_password']) : '';
-    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
-    $first_name = isset($_POST['first_name']) ? trim($_POST['first_name']) : '';
-    $last_name = isset($_POST['last_name']) ? trim($_POST['last_name']) : '';
     
     // Validation
     $errors = [];
@@ -40,36 +38,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = 'Passwords do not match.';
     }
     
-    if (empty($email)) {
-        $errors[] = 'Email is required.';
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = 'Please enter a valid email address.';
-    }
+    // No email or name required
     
-    if (empty($first_name)) {
-        $errors[] = 'First name is required.';
-    }
-    
-    if (empty($last_name)) {
-        $errors[] = 'Last name is required.';
-    }
-    
-    // Check if username already exists
-    $existing_users = getUsers();
-    foreach ($existing_users as $user) {
-        if ($user['username'] === $username) {
-            $errors[] = 'Username already exists. Please choose a different username.';
-            break;
-        }
+    // Check if username already exists (using MySQL)
+    $existing_user = getUserByUsername($username);
+    if ($existing_user) {
+        $errors[] = 'Username already exists. Please choose a different username.';
     }
     
     if (empty($errors)) {
         // Add user to the system
-        if (addUser($username, $password, $email, $first_name, $last_name)) {
+        if (addUser($username, $password)) {
             $success_message = 'Account created successfully! You can now login with your credentials.';
             
             // Clear form data
-            $username = $password = $confirm_password = $email = $first_name = $last_name = '';
+            $username = $password = $confirm_password = '';
         } else {
             $error_message = 'Failed to create account. Please try again.';
         }
@@ -97,22 +80,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <?php endif; ?>
             
             <form action="register.php" method="POST" class="register-form">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="first_name">First Name:</label>
-                        <input type="text" id="first_name" name="first_name" value="<?php echo htmlspecialchars($first_name ?? ''); ?>" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="last_name">Last Name:</label>
-                        <input type="text" id="last_name" name="last_name" value="<?php echo htmlspecialchars($last_name ?? ''); ?>" required>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email Address:</label>
-                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email ?? ''); ?>" required>
-                </div>
                 
                 <div class="form-group">
                     <label for="username">Username:</label>
@@ -130,8 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <div class="form-group">
                         <label for="confirm_password">Confirm Password:</label>
                         <input type="password" id="confirm_password" name="confirm_password" required>
-                    </div>
-                </div>
+        </div>
+</div>
                 
                 <button type="submit" class="register-btn">Create Account</button>
             </form>
@@ -304,14 +271,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 @media (max-width: 768px) {
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-    
-    .form-row .form-group {
-        margin-bottom: 1.5rem;
-    }
 }
 
 @media (max-width: 480px) {

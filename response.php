@@ -1,37 +1,84 @@
 <?php
-$page_title = "Login Response";
-?>
+// Enable error reporting for debugging
+error_reporting(E_ALL);
+ini_set('display_errors', 1); // Show errors for debugging
+ini_set('log_errors', 1);
 
-<?php include 'header.php'; ?>
+// Start output buffering to prevent any output before headers
+ob_start();
 
-<?php
-include 'users_data.php';
+// Start session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
+// Include database configuration
+require_once 'db_config.php';
+
+// Clear any accidental output
+ob_end_clean();
 
 $login_successful = false;
 $error_message = '';
 
+// Process login FIRST, before any output
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = isset($_POST['username']) ? trim($_POST['username']) : '';
     $password = isset($_POST['password']) ? trim($_POST['password']) : '';
     
-
     if (!empty($username) && !empty($password)) {
-
-        $user = validateUser($username, $password);
-        
-        if ($user) {
-            $login_successful = true;
+        try {
+            // Connect to database
+            $conn = getDBConnection();
             
-
-            $_SESSION['LoggedIn'] = true;
-            $_SESSION['username'] = $username;
+            // Escape user input to prevent SQL injection (using mysqli_real_escape_string)
+            // Note: In production, prepared statements are preferred, but following assignment instructions
+            $username_escaped = mysqli_real_escape_string($conn, $username);
+            $password_escaped = mysqli_real_escape_string($conn, $password);
             
-
-            setcookie('username', $username, 0, '/');
+            // Build SQL query as specified: SELECT username FROM AuthorizedUsers WHERE username='XXXX' AND password='XXXX'
+            $sql = "SELECT username FROM AuthorizedUsers WHERE username='" . $username_escaped . "' AND password='" . $password_escaped . "'";
             
-        } else {
-            $error_message = 'Invalid username or password. Please try again.';
+            // Execute query
+            $result = $conn->query($sql);
+            
+            // Check for query errors
+            if ($result === false) {
+                $error_message = 'Database error: ' . htmlspecialchars($conn->error) . '<br>SQL: ' . htmlspecialchars($sql);
+                $_SESSION['LoggedIn'] = false;
+            } else {
+                // Check how many rows this statement returns
+                $num_rows = $result->num_rows;
+                
+                // Debug: Show what we found
+                if ($num_rows > 0) {
+                    // Valid username/password combination found
+                    $login_successful = true;
+                    
+                    // Set session and cookie BEFORE any HTML output
+                    $_SESSION['LoggedIn'] = true;
+                    $_SESSION['username'] = $username;
+                    setcookie('username', $username, 0, '/');
+                    
+                } else {
+                    // No rows returned - invalid username/password combination
+                    $error_message = 'Invalid username or password. Query returned 0 rows. Check that username and password exist in AuthorizedUsers table.';
+                    $_SESSION['LoggedIn'] = false;
+                }
+            }
+            
+            // Close connection
+            closeDBConnection($conn);
+            
+        } catch (Exception $e) {
+            error_log("Login error: " . $e->getMessage());
+            error_log("Login error trace: " . $e->getTraceAsString());
+            $error_message = 'An error occurred during login. Please try again.';
+            $_SESSION['LoggedIn'] = false;
+        } catch (Error $e) {
+            error_log("Fatal error in login: " . $e->getMessage());
+            error_log("Fatal error trace: " . $e->getTraceAsString());
+            $error_message = 'A system error occurred. Please contact support.';
             $_SESSION['LoggedIn'] = false;
         }
     } else {
@@ -39,12 +86,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['LoggedIn'] = false;
     }
 } else {
-
+    // Redirect if not POST request
     header('Location: login.php');
     exit();
 }
-?>
 
+// NOW it's safe to output HTML
+$page_title = "Login Response";
+include 'header.php';
+?>
 <div class="response-container">
     <div class="response-wrapper">
         <?php if ($login_successful): ?>
