@@ -15,7 +15,7 @@
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#collections">Collections</a></li>
                     <li><a href="#sizechart">Size Chart</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="contact.php">Contact</a></li>
                 </ul>
             </div>
             
@@ -48,6 +48,23 @@
     
     <!-- JavaScript Files -->
     <script src="suits.js"></script>
+    
+    <!-- SlimMenu Initialization -->
+    <script>
+        $(document).ready(function() {
+            $('.slimmenu').slimmenu({
+                resizeWidth: '768',
+                initiallyVisible: false,
+                collapserTitle: 'Main Menu',
+                animSpeed: 'medium',
+                easingEffect: null,
+                indentChildren: false,
+                childrenIndenter: '&nbsp;&nbsp;',
+                expandIcon: '<i>&#9660;</i>',
+                collapseIcon: '<i>&#9650;</i>'
+            });
+        });
+    </script>
     
     <!-- Sticky Navigation Script - Removed color change functionality -->
     <script>

@@ -11,29 +11,17 @@ $page_title = "Home";
     <div class="loading-text"></div>
 </div>
 
-<!-- Carousel and Testimonials Section -->
+<!-- ResponsiveSlides Section -->
 <div class="hero-section">
     <div class="hero-container">
-        <!-- Carousel Section -->
+        <!-- ResponsiveSlides Section -->
         <div class="carousel-section">
-            <div class="carousel-wrapper">
-                <div class="carousel">
-                    <div class="image-container" id="imgs">
-                        <img src="images/purple.jpg" alt="Purple Suit" />
-                        <img src="images/zoot.jpg" alt="Zoot Suit" />
-                        <img src="images/x-mas.jpg" alt="Christmas Suit" />
-                        <img src="images/stripes.jpg" alt="Striped Suit" />
-                    </div>
-                    
-                    <!-- Carousel Indicators -->
-                    <div class="carousel-indicators">
-                        <span class="indicator active" data-slide="0"></span>
-                        <span class="indicator" data-slide="1"></span>
-                        <span class="indicator" data-slide="2"></span>
-                        <span class="indicator" data-slide="3"></span>
-                    </div>
-                </div>
-            </div>
+            <ul class="rslides">
+                <li><img src="images/purple.jpg" alt="Purple Suit"></li>
+                <li><img src="images/zoot.jpg" alt="Zoot Suit"></li>
+                <li><img src="images/x-mas.jpg" alt="Christmas Suit"></li>
+                <li><img src="images/stripes.jpg" alt="Striped Suit"></li>
+            </ul>
         </div>
         
         <!-- Testimonials Section -->
@@ -47,7 +35,6 @@ $page_title = "Home";
                 <div class="testimonials-carousel">
                     <div class="testimonial-slide active">
                         <div class="testimonial-content">
-                            <div class="quote-icon">"</div>
                             <p class="testimonial-text">A happy hybrid of price and quality, you'll never get a suit anywhere else</p>
                             <div class="testimonial-author">
                                 <h4>GQ Magazine</h4>
@@ -58,7 +45,6 @@ $page_title = "Home";
                     
                     <div class="testimonial-slide">
                         <div class="testimonial-content">
-                            <div class="quote-icon">"</div>
                             <p class="testimonial-text">Simply Suits are simply amazing. Trademark that!</p>
                             <div class="testimonial-author">
                                 <h4>Howard Stern</h4>
@@ -69,7 +55,6 @@ $page_title = "Home";
                     
                     <div class="testimonial-slide">
                         <div class="testimonial-content">
-                            <div class="quote-icon">"</div>
                             <p class="testimonial-text">Some of the best suits I've ever seen, and I know fashion!</p>
                             <div class="testimonial-author">
                                 <h4>Jay Leno</h4>
@@ -80,7 +65,6 @@ $page_title = "Home";
                     
                     <div class="testimonial-slide">
                         <div class="testimonial-content">
-                            <div class="quote-icon">"</div>
                             <p class="testimonial-text">Simply Suits may even have made up for the 70s</p>
                             <div class="testimonial-author">
                                 <h4>Time Magazine</h4>
@@ -272,83 +256,12 @@ $page_title = "Home";
     align-items: center;
 }
 
-/* Carousel Section */
+/* ResponsiveSlides Section */
 .carousel-section {
     display: flex;
     justify-content: center;
-}
-
-.carousel-wrapper {
     width: 100%;
     max-width: 500px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 25px;
-}
-
-.carousel {
-    position: relative;
-    background: white;
-    border-radius: 25px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
-    width: 100%;
-    height: 400px;
-}
-
-.carousel:hover {
-    transform: translateY(-5px);
-}
-
-.image-container {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    border-radius: 25px;
-    overflow: hidden;
-    width: 100%;
-    position: relative;
-}
-
-.image-container img {
-    width: 100%;
-    min-width: 100%;
-    height: 400px;
-    object-fit: cover;
-    display: block;
-    flex-shrink: 0;
-    position: relative;
-}
-
-.carousel-indicators {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 10;
-}
-
-.indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.indicator.active {
-    background: var(--accent-color, #3498db);
-    border-color: white;
-    transform: scale(1.2);
-}
-
-.indicator:hover {
-    background: rgba(255, 255, 255, 0.8);
-    transform: scale(1.1);
 }
 
 /* Testimonials Section */
@@ -373,7 +286,7 @@ $page_title = "Home";
 
 .testimonials-wrapper {
     position: relative;
-    height: 400px;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
 }
@@ -381,6 +294,7 @@ $page_title = "Home";
 .testimonials-header {
     text-align: center;
     margin-bottom: 2rem;
+    flex-shrink: 0;
 }
 
 .testimonials-header h2 {
@@ -400,6 +314,9 @@ $page_title = "Home";
     flex: 1;
     position: relative;
     overflow: hidden;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
 }
 
 .testimonial-slide {
@@ -409,27 +326,24 @@ $page_title = "Home";
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .testimonial-slide.active {
     opacity: 1;
+    visibility: visible;
+    z-index: 1;
 }
 
 .testimonial-content {
     text-align: center;
     padding: 2rem 0;
-}
-
-.quote-icon {
-    font-size: 3rem;
-    color: var(--accent-color, #3498db);
-    font-family: serif;
-    line-height: 1;
-    margin-bottom: 1.5rem;
-    opacity: 0.7;
+    width: 100%;
+    max-width: 100%;
 }
 
 .testimonial-text {
@@ -439,15 +353,19 @@ $page_title = "Home";
     margin-bottom: 2rem;
     font-style: italic;
     position: relative;
+    padding: 0 1rem;
 }
 
-.testimonial-text::after {
+.testimonial-text::before {
     content: '"';
-    font-size: 2rem;
-    color: var(--accent-color, #3498db);
+    font-size: 3rem;
+    color: #3498db;
+    font-family: serif;
+    line-height: 1;
     position: absolute;
-    bottom: -10px;
-    right: 0;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
     opacity: 0.7;
 }
 
@@ -474,6 +392,9 @@ $page_title = "Home";
     justify-content: center;
     gap: 10px;
     margin-top: 2rem;
+    flex-shrink: 0;
+    z-index: 2;
+    position: relative;
 }
 
 .testimonial-indicator {
@@ -502,12 +423,12 @@ $page_title = "Home";
         gap: 3rem;
     }
     
-    .carousel-wrapper {
+    .carousel-section {
         max-width: 600px;
     }
     
     .testimonials-wrapper {
-        height: 350px;
+        min-height: 350px;
     }
 }
 
@@ -526,19 +447,19 @@ $page_title = "Home";
     }
     
     .testimonials-wrapper {
-        height: 300px;
+        min-height: 300px;
     }
     
     .testimonials-header h2 {
         font-size: 1.8rem;
     }
     
-    .quote-icon {
-        font-size: 2.5rem;
-    }
-    
     .testimonial-text {
         font-size: 1.1rem;
+    }
+    
+    .testimonial-text::before {
+        font-size: 2.5rem;
     }
 }
 
@@ -552,7 +473,7 @@ $page_title = "Home";
     }
     
     .testimonials-wrapper {
-        height: 280px;
+        min-height: 280px;
     }
     
     .testimonials-header h2 {
@@ -563,12 +484,12 @@ $page_title = "Home";
         font-size: 0.9rem;
     }
     
-    .quote-icon {
-        font-size: 2rem;
-    }
-    
     .testimonial-text {
         font-size: 1rem;
+    }
+    
+    .testimonial-text::before {
+        font-size: 2rem;
     }
     
     .testimonial-author h4 {
@@ -801,6 +722,61 @@ $page_title = "Home";
         font-size: 0.8rem;
     }
 }
+
+.rslides {
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  }
+
+.rslides li {
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  display: none;
+  width: 100%;
+  left: 0;
+  top: 0;
+  }
+
+.rslides li:first-child {
+  position: relative;
+  display: block;
+  float: left;
+  }
+
+.rslides img {
+  display: block;
+  height: auto;
+  float: left;
+  width: 100%;
+  border: 0;
+  }
 </style>
+
+<script>
+  $(function() {
+    $(".rslides").responsiveSlides({
+  auto: true,             // Boolean: Animate automatically, true or false
+  speed: 500,            // Integer: Speed of the transition, in milliseconds
+  timeout: 4000,          // Integer: Time between slide transitions, in milliseconds
+  pager: false,           // Boolean: Show pager, true or false
+  nav: false,             // Boolean: Show navigation, true or false
+  random: false,          // Boolean: Randomize the order of the slides, true or false
+  pause: false,           // Boolean: Pause on hover, true or false
+  pauseControls: true,    // Boolean: Pause when hovering controls, true or false
+  prevText: "Previous",   // String: Text for the "previous" button
+  nextText: "Next",       // String: Text for the "next" button
+  maxwidth: "",           // Integer: Max-width of the slideshow, in pixels
+  navContainer: "",       // Selector: Where controls should be appended to, default is after the 'ul'
+  manualControls: "",     // Selector: Declare custom pager navigation
+  namespace: "rslides",   // String: Change the default namespace used
+  before: function(){},   // Function: Before callback
+  after: function(){}     // Function: After callback
+});
+  });
+</script>
 
 <?php include 'footer.php'; ?>

@@ -2,7 +2,7 @@
 // Site Navigation Menu
 ?>
 <nav class="main-navigation">
-    <ul class="nav-menu">
+    <ul class="slimmenu">
         <li><a href="index.php">Home</a></li>
         <li><a href="#about">About</a></li>
         <li class="dropdown">
@@ -20,7 +20,7 @@
         <li><a href="sizechart.php">Size Chart</a></li>
         <li><a href="order_form.php">Place Order</a></li>
         <li><a href="#feedback">Feedback</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="contact.php">Contact</a></li>
         <?php if (isset($_SESSION['LoggedIn']) && $_SESSION['LoggedIn'] === true): ?>
             <li class="user-menu">
                 <a href="content.php">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></a>

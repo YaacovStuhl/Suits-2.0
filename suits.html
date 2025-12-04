@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible", content="ie=edge">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="responsiveslides.min.js"></script>
     <title>SUITS</title>
     
     <link rel = "stylesheet" href = "suits.css">
@@ -28,32 +30,12 @@
         <div class="loading-text"></div>
     </div>
     <div class = "rotate" >
-        <div class="carousel">
-            <div class="image-container" id="imgs">
-              <img src="images/purple.jpg"
-             alt="first-image"
-             
-             />
-          <img
-             src="images/zoot.jpg"
-             alt="second-image"
-             />
-          <img
-             src="images/x-mas.jpg"
-             alt="third-image"
-             />
-          <img
-             src="images/stripes.jpg"
-             alt="fourth-image"
-             />
-            </div>
-      
-            <div class="buttons-container">
-              <button id="left" class="btns">Prev</button>
-              <button id="right" class="btns">Next</button>
-            </div>
-            
-        </div>
+        <ul class="rslides">
+            <li><img src="images/purple.jpg" alt=""></li>
+            <li><img src="images/zoot.jpg" alt=""></li>
+            <li><img src="images/x-mas.jpg" alt=""></li>
+            <li><img src="images/stripes.jpg" alt=""></li>
+        </ul>
         <div class = "reviews">
             <ul>
                 <br><li><i>"A happy hybrid of price and quality, you'll never get a suit anywhere else<footer>-GQ Magazine</footer></i></li><br>
@@ -190,4 +172,26 @@
     
 </body>
 <script src = "suits.js"></script>
+<script>
+  $(function() {
+    $(".rslides").responsiveSlides({
+      auto: true,
+      speed: 500,
+      timeout: 4000,
+      pager: false,
+      nav: false,
+      random: false,
+      pause: false,
+      pauseControls: true,
+      prevText: "Previous",
+      nextText: "Next",
+      maxwidth: "",
+      navContainer: "",
+      manualControls: "",
+      namespace: "rslides",
+      before: function(){},
+      after: function(){}
+    });
+  });
+</script>
 </html>

@@ -13,6 +13,7 @@ session_start();
     <!-- CSS Files -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="suits.css">
+    <link rel="stylesheet" href="slimmenu.min.css" type="text/css">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
@@ -21,6 +22,10 @@ session_start();
     <meta name="description" content="Simply Suits - Premium quality suits for every occasion. Formal, casual, plus size, and accessories.">
     <meta name="keywords" content="suits, formal wear, business casual, mens clothing, fashion">
     <meta name="author" content="Simply Suits">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="responsiveslides.min.js"></script>
+    <script src="jquery.slimmenu.min.js"></script>
 </head>
 <body>
     <!-- Site Header -->
