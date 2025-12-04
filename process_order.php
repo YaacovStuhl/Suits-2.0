@@ -33,6 +33,7 @@ if (empty($user_id)) {
     if (!$user) {
         $errors[] = 'Selected customer does not exist.';
     } else {
+        unset($user['password']); // no need to keep sensitive fields in session data
         $form_data['user'] = $user;
     }
 }

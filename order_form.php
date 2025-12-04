@@ -67,6 +67,9 @@ if (isset($_SESSION['LoggedIn']) && $_SESSION['LoggedIn'] === true && isset($_SE
                                 </option>
                             <?php endforeach; ?>
                         </select>
+                        <?php if (empty($all_users)): ?>
+                            <small class="error-text">No customers are available yet. Please register a user before placing an order.</small>
+                        <?php endif; ?>
                     <?php endif; ?>
                 </div>
             </div>

@@ -171,7 +171,7 @@ function getUserOrders($user_id) {
  */
 function getOrderById($order_id) {
     $conn = getDBConnection();
-    $stmt = $conn->prepare("SELECT o.order_id, o.user_id, o.product_name, o.total_amount, au.username FROM orders o LEFT JOIN AuthorizedUsers au ON o.user_id = au.user_id WHERE o.order_id = ?");
+    $stmt = $conn->prepare("SELECT o.order_id, o.user_id, o.product_name, o.total_amount, u.username FROM orders o LEFT JOIN users u ON o.user_id = u.user_id WHERE o.order_id = ?");
     $stmt->bind_param("i", $order_id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -188,7 +188,7 @@ function getOrderById($order_id) {
  */
 function getAllOrders() {
     $conn = getDBConnection();
-    $result = $conn->query("SELECT o.order_id, o.user_id, o.product_name, o.total_amount, au.username FROM orders o LEFT JOIN AuthorizedUsers au ON o.user_id = au.user_id ORDER BY o.order_id DESC");
+    $result = $conn->query("SELECT o.order_id, o.user_id, o.product_name, o.total_amount, u.username FROM orders o LEFT JOIN users u ON o.user_id = u.user_id ORDER BY o.order_id DESC");
     $orders = [];
     
     if ($result && $result->num_rows > 0) {
