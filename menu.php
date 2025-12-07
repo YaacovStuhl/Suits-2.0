@@ -2,7 +2,7 @@
 // Site Navigation Menu
 ?>
 <nav class="main-navigation">
-    <ul class="slimmenu">
+    <ul id="navigation" class="slimmenu">
         <li><a href="index.php">Home</a></li>
         <li><a href="#about">About</a></li>
         <li class="dropdown">
@@ -45,20 +45,44 @@
     align-items: center;
 }
 
-.nav-menu {
-    display: flex;
+#navigation,
+#navigation ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    align-items: center;
 }
 
-.nav-menu li {
+#navigation {
+    display: flex;
+    align-items: center;
+    background: transparent;
+}
+
+#navigation li {
+    background: transparent !important;
+    border: none !important;
+    float: none !important;
+}
+
+#navigation > li {
     position: relative;
     margin: 0 1rem;
 }
 
-.nav-menu a {
+#navigation > li:first-child {
+    margin-left: 0;
+}
+
+#navigation > li:last-child {
+    margin-right: 0;
+}
+
+#navigation > li {
+    position: relative;
+    margin: 0 1rem;
+}
+
+#navigation > li > a {
     color: var(--secondary-color);
     text-decoration: none;
     padding: 0.75rem 1.25rem;
@@ -69,11 +93,60 @@
     font-size: 1.1rem;
 }
 
-.nav-menu a:hover {
+#navigation > li.dropdown > a,
+#navigation > li.has-submenu > a {
+    padding-right: 2.75rem;
+}
+
+#navigation > li > a:hover,
+#navigation > li > a:focus {
     background-color: var(--accent-color);
     color: var(--secondary-color);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.menu-collapser {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-weight: 600;
+}
+
+.menu-collapser .collapse-button {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+}
+
+.menu-collapser .collapse-button .icon-bar {
+    background-color: var(--secondary-color);
+}
+
+.menu-collapser .collapse-button:hover {
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
+}
+
+#navigation li .sub-toggle {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    height: auto;
+    padding: 0;
+    background: transparent !important;
+    border: none;
+}
+
+#navigation li .sub-toggle > i {
+    display: inline-block;
+    color: var(--secondary-color);
+    font-size: 0.85rem;
+}
+
+#navigation li .sub-toggle.expanded > i {
+    color: var(--accent-color);
 }
 
 /* Dropdown Menu Styles */
@@ -94,12 +167,11 @@
     transform: translateY(-10px);
     transition: all 0.3s ease-in-out;
     z-index: 1000;
-    list-style: none;
     padding: 0.5rem 0;
     margin: 0;
 }
 
-.dropdown:hover .dropdown-menu {
+.dropdown:hover > .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -165,19 +237,20 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .nav-menu {
+    #navigation {
         flex-direction: column;
         width: 100%;
     }
     
-    .nav-menu li {
+    #navigation > li {
         margin: 0.25rem 0;
         width: 100%;
     }
     
-    .nav-menu a {
+    #navigation > li > a {
         text-align: center;
         padding: 0.75rem 1rem;
+        border-radius: 0;
     }
     
     .dropdown-menu {

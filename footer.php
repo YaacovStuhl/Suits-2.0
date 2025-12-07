@@ -47,24 +47,19 @@
     </footer>
     
     <!-- JavaScript Files -->
-    <script src="suits.js"></script>
-    
-    <!-- SlimMenu Initialization -->
+    <script src="jquery.slimmenu.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('.slimmenu').slimmenu({
-                resizeWidth: '768',
-                initiallyVisible: false,
-                collapserTitle: 'Main Menu',
-                animSpeed: 'medium',
-                easingEffect: null,
-                indentChildren: false,
-                childrenIndenter: '&nbsp;&nbsp;',
-                expandIcon: '<i>&#9660;</i>',
-                collapseIcon: '<i>&#9650;</i>'
-            });
-        });
+    $('#navigation').slimmenu(
+    {
+        resizeWidth: '800',
+        collapserTitle: 'Main Menu',
+        animSpeed: 'medium',
+        easingEffect: null,
+        indentChildren: false,
+        childrenIndenter: '&nbsp;'
+    });
     </script>
+    <script src="suits.js"></script>
     
     <!-- Sticky Navigation Script - Removed color change functionality -->
     <script>
