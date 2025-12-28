@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  section.panel
+    h2 Product Categories
+    if categories && categories.length
+      .grid.two
+        each category in categories
+          .stat-card
+            span= category.category_name
+            p= category.description || 'No description provided.'
+    else
+      p No categories found. Run the SQL seed script or add categories via the PHP admin.
+
+  //
+

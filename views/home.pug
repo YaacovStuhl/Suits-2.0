@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  section.panel
+    h2 Tailored Presence
+    .grid.two
+      each value, key in stats
+        .stat-card
+          span= key === 'categories' ? 'Product Categories' : key === 'clients' ? 'Registered Clients' : 'Measurements Captured'
+          strong= value
+
+  section.panel
+    h2 Featured Collections
+    if featuredCategories && featuredCategories.length
+      .grid.two
+        each category in featuredCategories
+          .stat-card
+            span= category.category_name
+            p= category.description || 'Versatile pieces ready for any event.'
+    else
+      p No categories available yet. Seed them with the PHP admin flows or database script.
+

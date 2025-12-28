@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  section.panel
+    h2 Measurement Intake
+    if saved
+      .alert.alert-success
+        strong Entry saved!
+        |  The Measurements table in MySQL now includes your submission.
+    if errors
+      .alert.alert-error
+        strong Please fix the following:
+        ul
+          each error in errors
+            li= error
+    form(method="POST", action="/measurements")
+      .grid.two
+        div
+          label(for="client_name") Client Name
+          input(type="text", id="client_name", name="client_name", required, value=formData.client_name || '')
+        div
+          label(for="email") Email
+          input(type="email", id="email", name="email", required, value=formData.email || '')
+        div
+          label(for="suit_style") Suit Style
+          select(id="suit_style", name="suit_style", required)
+            option(value="") -- Select Style --
+            - const styles = ['Classic Fit', 'Modern Slim', 'Wedding Tuxedo', 'Business Casual', 'Statement Jacket'];
+            each style in styles
+              option(value=style selected=formData.suit_style === style)= style
+        div
+          label(for="jacket") Jacket Size
+          input(type="text", id="jacket", name="jacket", placeholder="e.g., 40R", value=formData.jacket || '')
+        div
+          label(for="waist") Waist
+          input(type="text", id="waist", name="waist", placeholder="e.g., 32\"", value=formData.waist || '')
+        div
+          label(for="inseam") Inseam
+          input(type="text", id="inseam", name="inseam", placeholder="e.g., 30\"", value=formData.inseam || '')
+      div
+        label(for="fit_notes") Fit Notes
+        textarea(id="fit_notes", name="fit_notes", placeholder="Tell us about preferred breaks, lining, vents, or events.")= formData.fit_notes || ''
+      button(type="submit") Save Measurement Record
+

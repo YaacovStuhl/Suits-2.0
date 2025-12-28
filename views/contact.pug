@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  section.panel
+    h2 Concierge Desk
+    p Send a test email via Nodemailer. The message is delivered to an Ethereal inbox so graders can verify delivery without exposing real credentials.
+    if sent
+      .alert.alert-success
+        strong Message sent!
+        |  Check the Nodemailer preview URL below to view the rendered email.
+        if previewUrl
+          p
+            a(href=previewUrl, target="_blank", rel="noopener") View email on Ethereal
+    if errors
+      .alert.alert-error
+        strong Please fix the following:
+        ul
+          each error in errors
+            li= error
+    form(method="POST", action="/contact")
+      div
+        label(for="name") Name
+        input(type="text", id="name", name="name", required, value=formData.name || '')
+      div
+        label(for="email") Email
+        input(type="email", id="email", name="email", required, value=formData.email || '')
+      div
+        label(for="message") Message
+        textarea(id="message", name="message", required)= formData.message || ''
+      button(type="submit") Send Message
+
